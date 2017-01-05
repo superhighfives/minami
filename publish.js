@@ -650,7 +650,10 @@ exports.publish = function(taffyData, opts, tutorials) {
     // TODO: move the tutorial functions to templateHelper.js
     function generateTutorial(title, tutorial, filename) {
         var tutorialData = {
-            title: title.split('-').map(function(word) { return (word.charAt(0).toUpperCase() + word.slice(1)) }).join(' '),
+            title: title.split('-').map(function(word, i) {
+              if(i === 0 && !isNaN(word)) return
+              return (word.charAt(0).toUpperCase() + word.slice(1))
+            }).join(' '),
             header: tutorial.title,
             content: tutorial.parse(),
             children: tutorial.children
