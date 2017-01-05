@@ -21,12 +21,19 @@ var view;
 
 var outdir = path.normalize(env.opts.destination);
 
+function getName(title) {
+  return title.split('-').map(function(word, i) {
+    if(i === 0 && !isNaN(word)) return
+    return (word.charAt(0).toUpperCase() + word.slice(1))
+  }).join(' ')
+}
+
 function find(spec) {
     return helper.find(data, spec);
 }
 
 function tutoriallink(tutorial) {
-    return helper.toTutorial(tutorial, null, { tag: 'em', classname: 'disabled' });
+    return helper.toTutorial(tutorial, getName(tutorial), { tag: 'em', classname: 'disabled' });
 }
 
 function getAncestorLinks(doclet) {
@@ -369,7 +376,7 @@ function buildNav(members) {
     var seen = {};
     var seenTutorials = {};
 
-    nav += buildMemberNav(members.tutorials, 'Information', seenTutorials, linktoTutorial);
+    nav += buildMemberNav(members.tutorials, '⛱&nbsp;&nbsp;Sandpit', seenTutorials, linktoTutorial);
     nav += buildMemberNav(members.classes, 'Classes', seen, linkto);
     nav += buildMemberNav(members.modules, 'Modules', {}, linkto);
     nav += buildMemberNav(members.externals, 'Externals', seen, linktoExternal);
@@ -650,10 +657,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     // TODO: move the tutorial functions to templateHelper.js
     function generateTutorial(title, tutorial, filename) {
         var tutorialData = {
-            title: title.split('-').map(function(word, i) {
-              if(i === 0 && !isNaN(word)) return
-              return (word.charAt(0).toUpperCase() + word.slice(1))
-            }).join(' '),
+            title: getName(title),
             header: tutorial.title,
             content: tutorial.parse(),
             children: tutorial.children
