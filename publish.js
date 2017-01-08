@@ -372,11 +372,11 @@ function linktoExternal(longName, name) {
  * @return {string} The HTML for the navigation sidebar.
  */
 function buildNav(members) {
-    var nav = '<h2><a href="index.html">Home</a></h2>';
+    var nav = '<h3><a href="index.html">⛱&nbsp;&nbsp;Sandpit</a></h3>';
     var seen = {};
     var seenTutorials = {};
 
-    nav += buildMemberNav(members.tutorials, '⛱&nbsp;&nbsp;Sandpit', seenTutorials, linktoTutorial);
+    nav += buildMemberNav(members.tutorials, '', seenTutorials, linktoTutorial);
     nav += buildMemberNav(members.classes, 'Classes', seen, linkto);
     nav += buildMemberNav(members.modules, 'Modules', {}, linkto);
     nav += buildMemberNav(members.externals, 'Externals', seen, linktoExternal);
@@ -402,6 +402,11 @@ function buildNav(members) {
         else {
             nav += '<h3>Global</h3><ul>' + globalNav + '</ul>';
         }
+    }
+
+    var packageInfo = ( find({kind: 'package'}) || [] ) [0];
+    if (packageInfo && packageInfo.name && packageInfo.version) {
+      nav += '<h2 class="version">v' + packageInfo.version + '</h2>'
     }
 
     return nav;
