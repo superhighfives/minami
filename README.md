@@ -1,6 +1,6 @@
 # Minami
 
-A clean, responsive documentation template theme for JSDoc 3.
+A clean, responsive documentation template theme for JSDoc 3, updated specifically for [Sandpit](https://sandpitjs.com).
 
 ![Minami Screenshot](http://puu.sh/gOyNe/66c3adcb97.png)
 
