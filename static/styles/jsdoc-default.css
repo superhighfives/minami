@@ -35,10 +35,16 @@ p, ul, ol, blockquote {
 }
 
 blockquote {
-  background: #f7f7f7;
   margin: 0;
-  padding: 2px 20px;
-  border-left: 1px solid #d7d7d7;
+  padding: 0px 15px;
+  color: #6F6F6C;
+  border: 1px solid #00bcd4;
+  border-left: 4px solid #00bcd4;
+}
+
+blockquote p:first-line {
+  color: #00bcd4;
+  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
