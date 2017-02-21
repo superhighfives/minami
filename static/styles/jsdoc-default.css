@@ -38,12 +38,12 @@ blockquote {
   margin: 0;
   padding: 0px 15px;
   color: #6F6F6C;
-  border: 1px solid #00bcd4;
-  border-left: 4px solid #00bcd4;
+  border: 1px solid hsl(200, 100%, 43%);
+  border-left: 4px solid hsl(200, 100%, 43%);
 }
 
 blockquote p:first-line {
-  color: #00bcd4;
+  color: hsl(200, 100%, 43%);
   font-weight: bold;
 }
 
